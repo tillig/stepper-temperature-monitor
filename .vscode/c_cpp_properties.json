@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    {
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "defines": [
+        "ARDUINO=10800",
+        "USBCON"
+      ],
+      "forcedInclude": [
+        "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
+      ],
+      "includePath": [
+        "C:\\Program Files (x86)\\Arduino\\tools\\**",
+        "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
+        "${workspaceRoot}",
+        "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\**",
+        "C:\\Program Files (x86)\\Arduino\\libraries\\**",
+        "C:\\Users\\tillig\\Documents\\Arduino\\hardware\\tools\\**",
+        "C:\\Users\\tillig\\Documents\\Arduino\\libraries\\**"
+      ],
+      "intelliSenseMode": "clang-x64",
+      "name": "Win32"
+    }
+  ],
+  "version": 4
+}
