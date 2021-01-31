@@ -26,11 +26,22 @@ void setup()
 void loop()
 {
   axisX = readTemperature(xThermistorPin);
+  axisY = readTemperature(yThermistorPin);
+  axisZ = readTemperature(zThermistorPin);
 
-  Serial.print("X Temperature: ");
+  Serial.print("X: ");
   Serial.print(axisX);
   Serial.println(" F");
 
+  Serial.print("Y: ");
+  Serial.print(axisY);
+  Serial.println(" F");
+
+  Serial.print("Z: ");
+  Serial.print(axisZ);
+  Serial.println(" F");
+
+  Serial.println();
   delay(1000);
 }
 
