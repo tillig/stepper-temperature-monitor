@@ -13,7 +13,9 @@ float axisX, axisY, axisZ;
 const float R1 = 10000;
 
 // Steinhart-Hart coefficients for NTC thermistors (most common)
-// https://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation
+// https://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation I didn't
+// calculate these, and I found my thermistors aren't super accurate, so maybe
+// if I did calculate them I'd get more precise results.
 const float c1 = 1.009249522e-03, c2 = 2.378405444e-04, c3 = 2.019202697e-07;
 
 void setup()
@@ -31,15 +33,15 @@ void loop()
 
   Serial.print("X: ");
   Serial.print(axisX);
-  Serial.println(" F");
+  Serial.println(" C");
 
   Serial.print("Y: ");
   Serial.print(axisY);
-  Serial.println(" F");
+  Serial.println(" C");
 
   Serial.print("Z: ");
   Serial.print(axisZ);
-  Serial.println(" F");
+  Serial.println(" C");
 
   Serial.println();
   delay(1000);
@@ -47,9 +49,21 @@ void loop()
 
 float readTemperature(int pin)
 {
-  int Vo = analogRead(pin);
+  // I think I must have wired things up wrong/backwards from the tutorial
+  // because just analogRead(pin) did show that the resistance went up as
+  // temperature went up (correct) but the calculated temperature reading went
+  // _down_ (incorrect).
+  int Vo = 1023 - analogRead(pin);
+  Serial.print("pin ");
+  Serial.print(pin);
+  Serial.print(": ");
+  Serial.print(Vo);
+  Serial.print(" Vo; R2: ");
   float R2 = R1 * (1023.0 / (float)Vo - 1.0);
+  Serial.print(R2);
+  Serial.print("; logR2: ");
   float logR2 = log(R2);
+  Serial.print(logR2);
 
   // Steinhart-Hart equation for converting resistance to temperature Kelvin.
   float T = (1.0 / (c1 + c2 * logR2 + c3 * logR2 * logR2 * logR2));
@@ -57,8 +71,9 @@ float readTemperature(int pin)
   // Kelvin to Celsius
   T = T - 273.15;
 
-  // Celsius to Fahrenheit
-  T = (T * 9.0) / 5.0 + 32.0;
+  Serial.print("; ");
+  Serial.print(T);
+  Serial.println("C");
 
   return T;
 }

@@ -10,6 +10,8 @@ The math for getting temperature from a thermistor is complex and [this tutorial
 
 This [I2C 1602 tutorial](https://osoyoo.com/2017/07/09/arduino-lesson-i2c-lcd1602-display/) was helpful in figuring out how to make that work.
 
+I did notice that the thermistors I got seem to be reasonably accurate at room temperature but as they get warmer they become less precise. I didn't personally calculate the individual Steinhart-Hart constants for each thermistor, which is likely the problem; but I guess... just don't use these for, like, medical equipment or something. It's going to give you _an idea_ of the temperature, but it's not going to be spot-on.
+
 ## Parts
 
 - [Arduino Uno](https://amzn.to/3r756LT)
