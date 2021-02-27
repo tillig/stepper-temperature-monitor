@@ -2,5 +2,8 @@
   "arduino.defaultBaudRate": 115200,
   "cSpell.words": [
     "println"
-  ]
+  ],
+  "files.watcherExclude": {
+    "**/target": true
+  }
 }
