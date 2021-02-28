@@ -1,7 +1,10 @@
 {
   "arduino.defaultBaudRate": 115200,
   "cSpell.words": [
-    "println"
+    "circuitboard",
+    "println",
+    "steinhart",
+    "walkthrough"
   ],
   "files.watcherExclude": {
     "**/target": true
